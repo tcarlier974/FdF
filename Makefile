@@ -25,7 +25,7 @@ clean:
 	rm -f $(OBJ)
 	make -C ./libft clean
 	make -C ./mlx clean
-	
+
 fclean: clean
 	rm -f $(NAME)
 

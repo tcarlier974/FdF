@@ -6,20 +6,90 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/08 18:59:57 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/08 23:10:46 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(void)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*dst;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "FdF");
-	(void)mlx_win;
-	mlx_loop(mlx);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
+
+int    create_trgb(int t, int r, int g, int b)
+{
+    return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int generate_rgb()
+{
+    // get all the rgb color from the gratient each time i call the function
+    static int i = 0;
+    int r = (int)(sin(0.01 * i + 0) * 127 + 128);
+    int g = (int)(sin(0.01 * i + 2) * 127 + 128);
+    int b = (int)(sin(0.01 * i + 4) * 127 + 128);
+    i++;
+    return create_trgb(0, r, g, b);
+}
+
+t_data gen_img(void *mlx)
+{
+	t_data img;
+	int j;
+
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	for (int x = 0; x < 1920 ; x++)
+	{
+		if (x % 2 == 0)
+			j = generate_rgb();
+		for (int y = 290; y < 790; y ++)
+		{
+			my_mlx_pixel_put(&img, x, y, j);
+		}
+	}
+	return img;
+}
+int	my_close(int keycode, t_vars *vars)
+{
+	if (keycode == 53 || keycode == ON_DESTROY)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
+	}
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+    void	*mlx;
+    void	*mlx_win;
+    t_data	img;
+    t_vars	vars;
+
+    (void)av;
+    (void)ac;
+    mlx = mlx_init();
+    if (mlx == NULL)
+        return (1); // Handle error
+    mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+    if (mlx_win == NULL)
+        return (1); // Handle error
+    img = gen_img(mlx);
+    mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+
+    // Initialize vars
+    vars.mlx = mlx;
+    vars.win = mlx_win;
+
+    mlx_hook(vars.win, ON_KEYDOWN, 1L<<0, my_close, &vars);
+	mlx_hook(vars.win, ON_DESTROY, 1L<<17, my_close, &vars);
+    mlx_loop(mlx);
+}
+
 
