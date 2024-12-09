@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:58:07 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:02:45 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,16 @@ int generate_rgb()
     return create_trgb(0, r, g, b);
 }
 
-static int interpolate(int start, int end, float ratio)
+float fraction(float x1, float x2, float x)
 {
-    return (int)(start + (end - start) * ratio);
+ if (x1 != x2)
+  return ((x - x1) / (x2 - x1));
+ return (0);
+}
+
+int interpolate(int start, int end, float ratio)
+{
+    return (start + ((end - start) * ratio));
 }
 
 int gen_rgb(int z, int max, int min)
@@ -64,24 +71,20 @@ int gen_rgb(int z, int max, int min)
     return create_trgb(0, r, g, b);
 }
 
-static int  max(int a, int b)
-{
-    if (a > b)
-        return a;
-    return b;
-}
-
 int gen_color(t_tab tab1, t_tab tab2)
 {
-    float ratio;
     int r, g, b;
 
-    if (tab1.z == tab2.z)
-        ratio = 0.5;
-    else
-        ratio = (float)(tab2.z - tab1.z) / (float)max(abs(tab2.z), abs(tab1.z));
-    r = interpolate((tab1.color >> 16) & 0xFF, (tab2.color >> 16) & 0xFF, ratio);
-    g = interpolate((tab1.color >> 8) & 0xFF, (tab2.color >> 8) & 0xFF, ratio);
-    b = interpolate(tab1.color & 0xFF, tab2.color & 0xFF, ratio);
+    int r1 = (tab1.color >> 16) & 0xFF;
+    int r2 = (tab2.color >> 16) & 0xFF;
+    int g1 = (tab1.color >> 8) & 0xFF;
+    int g2 = (tab2.color >> 8) & 0xFF;
+    int b1 = tab1.color & 0xFF;
+    int b2 = tab2.color & 0xFF;
+    int z = (tab1.z + tab2.z) / 2;
+
+    r = r1 + (r2 - r1) * fraction(tab1.z, tab2.z, z);
+    g = g1 + (g2 - g1) * fraction(tab1.z, tab2.z, z);
+    b = b1 + (b2 - b1) * fraction(tab1.z, tab2.z, z);
     return create_trgb(0, r, g, b);
 }
