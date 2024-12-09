@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:40:24 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:42:57 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	}
 }
 
-void	*draw_line_img(t_data img, t_tab **tab, char *av)
+void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 {
 	int x;
 	int y;
@@ -44,14 +44,14 @@ void	*draw_line_img(t_data img, t_tab **tab, char *av)
 		while (x < count_col(av))
 		{
 			if (x + 1 < count_col(av))
-				draw_line(tab[y][x], tab[y][x + 1], &img);
+				draw_line(tab[y][x], tab[y][x + 1], &(*img));
 			if (y + 1 < count_lines(av))
-				draw_line(tab[y][x], tab[y + 1][x], &img);
+				draw_line(tab[y][x], tab[y + 1][x], &(*img));
 			x++;
 		}
 		y++;
 	}
-	return (img.img);
+	return (img->img);
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
