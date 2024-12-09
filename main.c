@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:17:16 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:29:23 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,33 +62,49 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 
 void    *get_img(void *mlx, int width, int height, char *av)
 {
-	t_tab	**tab;
-	int		fd;
-	char	*line;
-	int i;
-	int j;
+    int     line_count = count_lines(av);
+    int     col_count = count_col(av);
+    t_tab   **tab = malloc(sizeof(t_tab *) * line_count);
+    int     fd;
+    char    *line;
+    int     i;
+    int     j;
 
-	fd = open(av, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
-	j = 0;
-	init_tab(&tab, av);
-	while ((line = get_next_line(fd)))
-	{
-		i = 0;
-		while (ft_split(line, ' ')[i] != NULL)
-		{
-			tab[j][i].x = i * 20;
-			tab[j][i].y = j * 20;
-			tab[j][i].z = ft_atoi(ft_split(line, ' ')[i]);
-			tab[j][i].color = create_trgb(0, 125, 0, 125);
-			i++;
-		}
-		free(line);
-		j++;
-	}
-	close(fd);
-	return (draw_img(mlx, width, height, tab, av));
+    if (!tab)
+        return (NULL);
+	i = 0;
+    while (i < line_count)
+    {
+        tab[i] = malloc(sizeof(t_tab) * col_count); // Allocation pour chaque colonne
+        if (!tab[i])
+            return (NULL);
+		i++;
+    }
+
+    fd = open(av, O_RDONLY);
+    if (fd == -1)
+        return (NULL);
+    j = 0;
+    while ((line = get_next_line(fd)))
+    {
+        char **split_line = ft_split(line, ' ');
+        if (!split_line)
+            return (NULL); // Handle allocation failure
+        i = 0;
+        while (split_line[i])
+        {
+            tab[j][i].x = i * 20;
+            tab[j][i].y = j * 20;
+            tab[j][i].z = ft_atoi(split_line[i]);
+            tab[j][i].color = create_trgb(0, 125, 0, 125);
+            i++;
+        }
+        free(line);
+        free(split_line);
+        j++;
+    }
+    close(fd);
+    return (draw_img(mlx, width, height, tab, av));
 }
 
 int	main(int ac, char **av)
