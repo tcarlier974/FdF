@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:53:08 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:55:04 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,23 @@ int gen_rgb(int z, int max, int min)
 
     if (ratio < 0.33)
     {
-        // Interpoler entre blanc (0xFFFFFF) et jaune (0xFFFF00)
-        r = interpolate(255, 255, ratio / 0.33);
-        g = interpolate(255, 255, ratio / 0.33);
-        b = interpolate(255, 0, ratio / 0.33);
+        // Interpoler entre bleu (0x0000FF) et cyan (0x00FFFF)
+        r = interpolate(0, 0, ratio / 0.33);
+        g = interpolate(0, 255, ratio / 0.33);
+        b = interpolate(255, 255, ratio / 0.33);
     }
     else if (ratio < 0.66)
     {
-        // Interpoler entre jaune (0xFFFF00) et orange (0xFFA500)
-        r = interpolate(255, 255, (ratio - 0.33) / 0.33);
-        g = interpolate(255, 165, (ratio - 0.33) / 0.33);
-        b = interpolate(0, 0, (ratio - 0.33) / 0.33);
+        // Interpoler entre cyan (0x00FFFF) et jaune (0xFFFF00)
+        r = interpolate(0, 255, (ratio - 0.33) / 0.33);
+        g = interpolate(255, 255, (ratio - 0.33) / 0.33);
+        b = interpolate(255, 0, (ratio - 0.33) / 0.33);
     }
     else
     {
-        // Interpoler entre orange (0xFFA500) et rouge (0xFF0000)
+        // Interpoler entre jaune (0xFFFF00) et orange (0xFFA500)
         r = interpolate(255, 255, (ratio - 0.66) / 0.34);
-        g = interpolate(165, 0, (ratio - 0.66) / 0.34);
+        g = interpolate(255, 165, (ratio - 0.66) / 0.34);
         b = interpolate(0, 0, (ratio - 0.66) / 0.34);
     }
 
