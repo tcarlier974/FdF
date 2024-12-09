@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:35:58 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:49:46 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,18 @@ static int  max(int a, int b)
     return b;
 }
 
-int gen_color(int z1, int z2, int color1, int color2)
+int gen_color(t_tab tab1, t_tab tab2)
 {
     float ratio;
     int r, g, b;
 
-    // Calculer le ratio basé sur la différence de hauteur
-    if (z1 == z2)
+    if (tab1.z == tab2.z)
         ratio = 0.5;
     else
-        ratio = (float)(z2 - z1) / (float)max(abs(z2), abs(z1));
-
-    // Interpoler les composantes de couleur
-    r = interpolate((color1 >> 16) & 0xFF, (color2 >> 16) & 0xFF, ratio);
-    g = interpolate((color1 >> 8) & 0xFF, (color2 >> 8) & 0xFF, ratio);
-    b = interpolate(color1 & 0xFF, color2 & 0xFF, ratio);
-
+        ratio = (float)(tab2.z - tab1.z) / (float)max(abs(tab2.z), abs(tab1.z));
+    r = interpolate((tab1.color >> 16) & 0xFF, (tab2.color >> 16) & 0xFF, ratio);
+    g = interpolate((tab1.color >> 8) & 0xFF, (tab2.color >> 8) & 0xFF, ratio);
+    b = interpolate(tab1.color & 0xFF, tab2.color & 0xFF, ratio);
     return create_trgb(0, r, g, b);
 }
 
