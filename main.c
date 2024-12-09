@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 16:34:26 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:36:05 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 {
 	t_data img;
 	int i;
+	int j;
 
 	img.img = mlx_new_image(mlx, width, height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	i = 0;
-	while (i < count_lines(av))
+	j = count_lines(av);
+	while (i < j)
 	{
 		my_mlx_pixel_put(&img, tab[i]->x, tab[i]->y, tab[i]->color);
 		i++;
