@@ -6,13 +6,24 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 03:00:01 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:16:42 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* get_next_line.c */
 #include "get_next_line.h"
 #include <stdio.h>
+
+static char	*gnl_ft_strchr(const char *s, int c)
+{
+    while (*s)
+    {
+        if (*s == (char)c)
+            return ((char *)s);
+        s++;
+    }
+    return (NULL);
+}
 
 static char	*ft_extract_line(char **str)
 {
@@ -25,8 +36,8 @@ static char	*ft_extract_line(char **str)
         i++;
     if ((*str)[i] == '\n')
         i++;
-    line = ft_substr(*str, 0, i);
-    tmp = ft_substr(*str, i, ft_strlen(*str) - i);
+    line = gnl_ft_substr(*str, 0, i);
+    tmp = gnl_ft_substr(*str, i, gnl_ft_strlen(*str) - i);
     free(*str);
     if (!tmp)
     {
@@ -61,8 +72,8 @@ static void	ft_find_new(t_gnl *f, ssize_t *bytes, int fd)
 {
     int	len;
 
-    len = ft_strlen(f->buf);
-    while (!ft_strchr(f->buf, '\n') && *bytes > 0)
+    len = gnl_ft_strlen(f->buf);
+    while (!gnl_ft_strchr(f->buf, '\n') && *bytes > 0)
     {
         f->buf = ft_realloc(f->buf, len, BUFFER_SIZE);
         if (!f->buf)
@@ -96,4 +107,23 @@ char	*get_next_line(int fd)
     if (!line || (!f[fd].buf || !*f[fd].buf))
         cleanup_fd(&f[fd]);
     return (line);
+}
+
+int	main(void)
+{
+	int fd1;
+	char *line;
+
+	fd1 = open("empty.txt", O_RDONLY);
+	if (fd1 == -1)
+		return (0);
+	printf("\nfd1 = %d\n\n\n", fd1);
+	while ((line = get_next_line(fd1)))
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd1);
+	free(line);
+	return (0);
 }
