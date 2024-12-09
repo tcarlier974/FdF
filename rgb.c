@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:36:25 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:38:30 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int generate_rgb()
 
 float fraction(float x1, float x2, float x)
 {
- if (x1 != x2)
-  return ((x - x1) / (x2 - x1));
- return (0);
+    if (x1 != x2)
+        return ((x - x1) / (x2 - x1));
+    return (0);
 }
 
 int interpolate(int start, int end, float ratio)
@@ -39,16 +39,12 @@ int interpolate(int start, int end, float ratio)
 int gen_rgb(int z, int max, int min)
 {
     int r, g, b;
-    int r1 = 0x0000FF;
-    int r2 = 0xFF0000;
-    int g1 = 0x0000FF;
-    int g2 = 0xFF0000;
-    int b1 = 0x0000FF;
-    int b2 = 0xFF0000;
+    float ratio;
 
-    r = r1 + (r2 - r1) * fraction(min, max, z);
-    g = g1 + (g2 - g1) * fraction(min, max, z);
-    b = b1 + (b2 - b1) * fraction(min, max, z);
+    ratio = fraction(min, max, z);
+    r = interpolate(0, 255, ratio); // De 0 à 255 pour le rouge
+    g = interpolate(0, 0, ratio);   // De 0 à 0 pour le vert (pas de vert)
+    b = interpolate(255, 0, ratio); // De 255 à 0 pour le bleu
 
     return create_trgb(0, r, g, b);
 }
