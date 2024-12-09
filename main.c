@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 16:25:59 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:26:41 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void    *get_img(void *mlx, int width, int height, char *av)
 			tab[j].x = j + width / 4;
 			tab[j].y = i + height / 4;
 			tab[j].z = ft_atoi(ft_split(line, ' ')[i]);
+			printf("%d\n", tab[j].z);
 			tab[j].color = create_trgb(0, 255, 255, 255);
 			i++;
 		}
