@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:10:13 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:15:45 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	change_to_iso(t_tab ***tab, char *av)
 	l = count_col(av);
 	while (y < c)
 	{
-		printf("y : %d\n", y);
 		x = 0;
+		printf("y : %d\n", y);
 		while (x < l - 1)
 		{
 			printf("fff%d\n", tab[y][x]->x);
