@@ -5,16 +5,16 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = main.c \
 		./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c \
+		utils.c \
 
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Wall -Wextra -Werror -Imlx -c $< -o $@
-
+	$(CC) $(CFLAGS) -Imlx -I./libft -c $< -o $@
 
 $(NAME): $(OBJ) libft.a libmlx.a
 	git add .; git commit -m "auto"; git push
-	$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)
 
@@ -31,6 +31,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	make -C ./libft fclean
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 03:16:42 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:24:55 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,23 +107,4 @@ char	*get_next_line(int fd)
     if (!line || (!f[fd].buf || !*f[fd].buf))
         cleanup_fd(&f[fd]);
     return (line);
-}
-
-int	main(void)
-{
-	int fd1;
-	char *line;
-
-	fd1 = open("empty.txt", O_RDONLY);
-	if (fd1 == -1)
-		return (0);
-	printf("\nfd1 = %d\n\n\n", fd1);
-	while ((line = get_next_line(fd1)))
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd1);
-	free(line);
-	return (0);
 }

@@ -6,11 +6,18 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 02:50:48 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:31:45 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft/libft.h"
+#include "./mlx/mlx.h"
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "./get_next_line/get_next_line.h"
 #include "fdf.h"
+#include <stdio.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -44,6 +51,7 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
 	i = 0;
+
 	while (i < count_lines(av))
 	{
 		my_mlx_pixel_put(&img, tab[i]->x, tab[i]->y, tab[i]->color);
@@ -54,7 +62,7 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 
 void    *get_img(void *mlx, int width, int height, char *av)
 {
-	t_tab	*tab[count_lines(av)];
+	t_tab	**tab;
 	int		fd;
 	char	*line;
 	int i;
@@ -64,6 +72,7 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	if (fd == -1)
 		return (NULL);
 	i = 0, j = 0;
+	tab = malloc(sizeof(t_tab) * count_lines(av));
 	while ((line = get_next_line(fd)))
 	{
 		while (ft_split(line, ' ')[i])
@@ -90,7 +99,10 @@ int	main(int ac, char **av)
     t_vars	vars;
 
 	if (ac != 2)
+	{
+		ft_putstr_fd("Usage : ./fdf <file name>\n", 2);
 		return (1);
+	}
     mlx = mlx_init();
     if (mlx == NULL)
         return (1);
