@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:35:27 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:35:57 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
+	printf("Init slope\n");
 	while (1)
 	{
 		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, generate_rgb());
@@ -70,7 +71,6 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 	y = 0;
 	while (y < l)
 	{
-		printf("y = %d\n", y);
 		x = 0;
 		while (x < c)
 		{
