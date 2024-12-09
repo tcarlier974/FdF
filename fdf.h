@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:56:00 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:53:35 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "./get_next_line/get_next_line.h"
+
+# ifndef HEIGTH
+#  define HEIGHT 500
+# endif
+# ifndef WIDTH
+#  define WIDTH 500
+# endif
 
 typedef struct	s_data {
 	void	*img;
@@ -58,6 +65,11 @@ typedef struct	s_line {
 	int		sy;
 }				t_line;
 
+typedef struct	s_lenth {
+	int		offset_x;
+	int		offset_y;
+}				t_lenth;
+
 int		count_lines(char *av);
 void	init_tab(t_tab ***tab, char *av);
 int		count_col(char *av);
@@ -67,6 +79,7 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		generate_rgb();
 int		create_trgb(int t, int r, int g, int b);
-void	change_to_iso(t_tab ***tab, char *av);
+void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y);
+void	init_lenth(t_tab **tab, t_lenth *lenth, int height, int width);
 
 #endif

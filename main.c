@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:14:52 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:52:41 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 	t_data img;
 	int x;
 	int y;
-	int	c;
-	int	l;
+	t_lenth lenth;
+	int c;
+	int l;
 
 	img.img = mlx_new_image(mlx, width, height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
@@ -48,7 +49,8 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 	y = 0;
 	c = count_lines(av);
 	l = count_col(av);
-	change_to_iso(&tab, av);
+	init_lenth(tab, &lenth, height, width);
+	change_to_iso(&tab, av, lenth.offset_x, lenth.offset_y);
 	printf("Iso done\n");
 	while (y < c)
 	{
@@ -110,10 +112,10 @@ int	main(int ac, char **av)
     mlx = mlx_init();
     if (mlx == NULL)
         return (1);
-    mlx_win = mlx_new_window(mlx, 500, 500, "FDF");
+    mlx_win = mlx_new_window(mlx, HEIGHT, WIDTH, "FDF");
     if (mlx_win == NULL)
         return (1);
-	img.img = get_img(mlx, 500, 500, av[1]);
+	img.img = get_img(mlx, HEIGHT, WIDTH, av[1]);
     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     vars.mlx = mlx;
     vars.win = mlx_win;

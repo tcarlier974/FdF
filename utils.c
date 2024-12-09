@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 02:45:07 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:51:20 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:56:22 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,10 @@ int	count_col(char *av)
 	close(fd);
 	free(line);
 	return (i);
+}
+
+void	init_lenth(t_tab **tab, t_lenth *lenth, int height, int width)
+{
+	(*lenth).offset_x = WIDTH / 2 - isometric_format_x(tab[height / 2][width / 2].x, tab[height / 2][width / 2].y, tab[height / 2][width / 2].z);
+	(*lenth).offset_y = HEIGHT / 2 - isometric_format_y(tab[height / 2][width / 2].x, tab[height / 2][width / 2].y, tab[height / 2][width / 2].z);
 }

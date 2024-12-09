@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:33:12 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:35:19 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	isometric_format_y(int x, int y, int z)
 	return ((tmp + y) * sin(0.523599) - z);
 }
 
-void	change_to_iso(t_tab ***tab, char *av)
+void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y)
 {
     int x;
     int y;
@@ -48,10 +48,10 @@ void	change_to_iso(t_tab ***tab, char *av)
         {
             tmpx = (*tab)[y][x].x;
             (*tab)[y][x].x = isometric_format_x((*tab)[y][x].x, 
-                           (*tab)[y][x].y, (*tab)[y][x].z) + 250;
+                           (*tab)[y][x].y, (*tab)[y][x].z) + offset_x;
             printf("x : %d  ", (*tab)[y][x].x);
             (*tab)[y][x].y = isometric_format_y(tmpx, 
-                           (*tab)[y][x].y, (*tab)[y][x].z) + 250;
+                           (*tab)[y][x].y, (*tab)[y][x].z) + offset_y;
             printf("y : %d\n", (*tab)[y][x].y);
             x++;
         }
