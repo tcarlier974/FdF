@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 18:07:09 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:20:16 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int  	isometric_format_y(int x, int y, int z);
 int  	isometric_format_x(int x, int y, int z);
 void	*draw_line_img(t_data *img, t_tab **tab, char *av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		generate_rgb();
+int		create_trgb(int t, int r, int g, int b);
 
 #endif

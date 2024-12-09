@@ -7,6 +7,7 @@ SRC = main.c \
 		./get_next_line/get_next_line_utils.c \
 		utils.c \
 		draw.c \
+		rgb.c \
 
 OBJ = $(SRC:.c=.o)
 
