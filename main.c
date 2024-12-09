@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 16:38:58 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:41:55 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	if (fd == -1)
 		return (NULL);
 	j = 0;
-	tab = malloc(sizeof(t_tab) * count_lines(av));
+	init_tab(&tab, av);
 	while ((line = get_next_line(fd)))
 	{
 		printf("%s\n", line);

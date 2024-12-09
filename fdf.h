@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 02:46:38 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:46:30 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ typedef struct	s_tab {
 }				t_tab;
 
 int	count_lines(char *av);
+void	init_tab(t_tab ***tab, char *av);
 
 #endif
