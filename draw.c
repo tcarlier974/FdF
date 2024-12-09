@@ -6,64 +6,50 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:34:45 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:38:15 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	*draw_line_img(t_data img, t_tab **tab)
+static void	draw_line(t_tab tab1, t_tab tab2, t_data img)
 {
-	int		i;
-	int		j;
-	int		x;
-	int		y;
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
-	int		dx;
-	int		dy;
-	int		p;
-	int		xinc;
-	int		yinc;
-	int		color;
+	int dx;
+	int dy;
+	int x;
+	int y;
+	int i;
 
+	dx = tab2.x - tab1.x;
+	dy = tab2.y - tab1.y;
+	x = tab1.x;
+	y = tab1.y;
 	i = 0;
-	while (i < count_lines("map.fdf"))
+	while (i <= dx)
 	{
-		j = 0;
-		while (j < count_col("map.fdf"))
-		{
-			x1 = tab[i][j].x;
-			y1 = tab[i][j].y;
-			x2 = tab[i][j + 1].x;
-			y2 = tab[i][j + 1].y;
-			dx = x2 - x1;
-			dy = y2 - y1;
-			x = x1;
-			y = y1;
-			p = 2 * dy - dx;
-			xinc = (dx > 0) ? 1 : -1;
-			yinc = (dy > 0) ? 1 : -1;
-			dx = (dx < 0) ? -dx : dx;
-			dy = (dy < 0) ? -dy : dy;
-			color = tab[i][j].color;
-			while (x != x2 || y != y2)
-			{
-				my_mlx_pixel_put(&img, x, y, color);
-				if (p >= 0)
-				{
-					y += yinc;
-					p += 2 * dy - 2 * dx;
-				}
-				else
-					p += 2 * dy;
-				x += xinc;
-			}
-			j++;
-		}
+		my_mlx_pixel_put(&img, x + i, y + i * dy / dx, tab1.color);
 		i++;
+	}
+}
+
+void	*draw_line_img(t_data img, t_tab **tab, char *av)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < count_lines(av))
+	{
+		x = 0;
+		while (x < count_col(av))
+		{
+			if (x + 1 < count_col(av))
+				draw_line(tab[y][x], tab[y][x + 1], img);
+			if (y + 1 < count_lines(av))
+				draw_line(tab[y][x], tab[y + 1][x], img);
+			x++;
+		}
+		y++;
 	}
 	return (img.img);
 }
