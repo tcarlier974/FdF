@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:15:23 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:17:16 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 		}
 		y++;
 	}
-	printf("x:%d y:%d z:%d\n", tab[0][0].x, tab[0][0].y, tab[0][0].z);
 	return (draw_line_img(&img, tab, av));
 }
 
@@ -80,15 +79,11 @@ void    *get_img(void *mlx, int width, int height, char *av)
 		while (ft_split(line, ' ')[i] != NULL)
 		{
 			tab[j][i].x = i * 20;
-			printf("x:%d ", tab[j][i].x);
 			tab[j][i].y = j * 20;
-			printf("y:%d ", tab[j][i].y);
 			tab[j][i].z = ft_atoi(ft_split(line, ' ')[i]);
-			printf("z:%d ", tab[j][i].z);
 			tab[j][i].color = create_trgb(0, 125, 0, 125);
 			i++;
 		}
-		printf("\n");
 		free(line);
 		j++;
 	}
