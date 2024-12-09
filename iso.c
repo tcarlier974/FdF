@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:15:45 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:18:35 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,31 @@ int	isometric_format_y(int x, int y, int z)
 
 void	change_to_iso(t_tab ***tab, char *av)
 {
-	int x;
-	int y;
-	int c;
-	int l;
-	int tmpx;
+    int x;
+    int y;
+    int c;
+    int l;
+    int tmpx;
 
-	y = 0;
-	c = count_lines(av);
-	l = count_col(av);
-	while (y < c)
-	{
-		x = 0;
-		printf("y : %d\n", y);
-		while (x < l - 1)
-		{
-			printf("fff%d\n", tab[y][x]->x);
-			tmpx = tab[y][x]->x;
-			tab[y][x]->x = isometric_format_x(tab[y][x]->x, tab[y][x]->y, tab[y][x]->z);
-			printf("x : %d  ", tab[y][x]->x);
-			tab[y][x]->y = isometric_format_y(tmpx, tab[y][x]->y, tab[y][x]->z);
-			printf("y : %d\n", tab[y][x]->y);
-			x++;
-		}
-		y++;
-	}
+    y = 0;
+    c = count_lines(av);
+    l = count_col(av);
+    while (y < c)
+    {
+        x = 0;
+        printf("y : %d\n", y);
+        while (x < l - 1)
+        {
+            printf("fff%d\n", (*tab)[y][x].x);
+            tmpx = (*tab)[y][x].x;
+            (*tab)[y][x].x = isometric_format_x((*tab)[y][x].x, 
+                           (*tab)[y][x].y, (*tab)[y][x].z);
+            printf("x : %d  ", (*tab)[y][x].x);
+            (*tab)[y][x].y = isometric_format_y(tmpx, 
+                           (*tab)[y][x].y, (*tab)[y][x].z);
+            printf("y : %d\n", (*tab)[y][x].y);
+            x++;
+        }
+        y++;
+    }
 }
