@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:59:55 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:00:56 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	change_to_iso(t_tab ***tab, char *av)
 			printf("y : %d\n", tab[y][x]->y);
 			x++;
 		}
+		printf(" Test \n");
 		y++;
 	}
 }
