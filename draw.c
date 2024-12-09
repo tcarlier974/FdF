@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:15:20 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:21:21 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,12 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	t_line	line;
 	int		e2;
 	
-	// Vérifier que les coordonnées sont dans les limites
-	if (tab1.x < 0 || tab1.x >= WIDTH || tab1.y < 0 || tab1.y >= HEIGHT ||
-		tab2.x < 0 || tab2.x >= WIDTH || tab2.y < 0 || tab2.y >= HEIGHT)
-		return;
-	
-	line.sx = 0;
-	line.sy = 0;
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
 	while (1)
 	{
-		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, create_trgb(0, 255, 255, 255));
+		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, gen_color(tab1.z, tab2.z,
+			tab1.color, tab2.color));
 		if (tab1.x == tab2.x && tab1.y == tab2.y)
 			break ;
 		e2 = 2 * line.err;

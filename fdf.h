@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:17:33 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:22:03 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int		generate_rgb();
 int		create_trgb(int t, int r, int g, int b);
 void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y);
 void	init_lenth(t_tab **tab, t_lenth *lenth, int height, int width);
+int		gen_color(int z1, int z2, int color1, int color2);
 
 #endif
