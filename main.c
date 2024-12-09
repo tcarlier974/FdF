@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:33:40 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:33:55 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 		}
 		y++;
 	}
-	printf("draw_line_img\n");
 	return (draw_line_img(&img, tab, av));
 }
 
