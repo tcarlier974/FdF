@@ -6,29 +6,50 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:42:57 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:56:50 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+static	void	init_slope(int *sx, int *sy, t_tab *tab1, t_tab *tab2)
+{
+	if (tab1->x < tab2->x)
+		*sx = 1;
+	else
+		*sx = -1;
+	if (tab1->y < tab2->y)
+		*sy = 1;
+	else
+		*sy = -1;
+}
+
 static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 {
 	int dx;
 	int dy;
-	int x;
-	int y;
-	int i;
+	int sx;
+	int sy;
+	int err;
 
-	dx = abs(tab2.x - tab1.x);
-	dy = -abs(tab2.y - tab1.y);
-	x = tab1.x;
-	y = tab1.y;
-	i = 0;
-	while (i <= dx)
+	dx = abs(tab2.x - tab1.x), dy = -abs(tab2.y - tab1.y), err = dx + dy;
+	init_slope(&sx, &sy, &tab1, &tab2);
+	while (1)
 	{
-		my_mlx_pixel_put(&(*img), x + i, y + i * dy / dx, tab1.color);
-		i++;
+		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, tab1.color);
+		if (tab1.x == tab2.x && tab1.y == tab2.y)
+			break;
+		int e2 = 2 * err;
+		if (e2 >= dy)
+		{
+			err += dy;
+			tab1.x += sx;
+		}
+		if (e2 <= dx)
+		{
+			err += dx;
+			tab1.y += sy;
+		}
 	}
 }
 
