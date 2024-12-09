@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 02:45:07 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 21:27:21 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:27:57 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,14 @@ void	init_tab(t_tab ***tab, char *av)
 	if (fd == -1)
 		return ;
 	j = 0;
-	line = get_next_line(fd);
-	while (ft_split(line, ' ')[i] != NULL)
-		i++;
-	(*tab)[j] = malloc(sizeof(t_tab) * i);
-	j++;
+	while ((line = get_next_line(fd)))
+	{
+		while (ft_split(line, ' ')[i] != NULL)
+			i++;
+		(*tab)[j] = malloc(sizeof(t_tab) * i);
+		j++;
+		free(line);
+	}
 	close(fd);
 	free(line);
 }
