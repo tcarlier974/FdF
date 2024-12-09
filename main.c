@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:10:19 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:37:11 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,15 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	char	*line;
 	int i;
 	int j;
+	int max;
+	int min;
 
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
 	j = 0;
 	init_tab(&tab, av);
+	init_extremum(av, &max, &min);
 	while ((line = get_next_line(fd)))
 	{
 		i = 0;
@@ -87,7 +90,7 @@ void    *get_img(void *mlx, int width, int height, char *av)
 			tab[j][i].x = i * 20;
 			tab[j][i].y = j * 20;
 			tab[j][i].z = ft_atoi(ft_split(line, ' ')[i]);
-			tab[j][i].color = create_trgb(0, 125, 0, 125);
+			tab[j][i].color = gen_rgb(tab[j][i].z, max, min);
 			i++;
 		}
 		free(line);
