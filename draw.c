@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:28:34 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:32:09 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 {
 	t_line	line;
 	int		e2;
-
+	line.sx = 0;
+	line.sy = 0;
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
 	while (1)
