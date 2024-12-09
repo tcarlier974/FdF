@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:57:30 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:00:54 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 	y = 0;
 	c = count_lines(av);
 	l = count_col(av);
-	init_lenth(tab, &lenth, height, width);
+	init_lenth(tab, &lenth, c, l);
 	printf("lenth done\n");
 	change_to_iso(&tab, av, lenth.offset_x, lenth.offset_y);
 	printf("Iso done\n");
