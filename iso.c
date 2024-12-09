@@ -6,11 +6,12 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:55:34 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:56:59 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 int	isometric_format_x(int x, int y, int z)
 {
@@ -33,6 +34,7 @@ void	change_to_iso(t_tab ***tab, char *av)
 	y = 0;
 	c = count_lines(av);
 	l = count_col(av);
+	printf("c : %d\n", c);
 	while (y < c)
 	{
 		x = 0;
