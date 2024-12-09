@@ -6,13 +6,13 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:38:15 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:39:18 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	draw_line(t_tab tab1, t_tab tab2, t_data img)
+static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 {
 	int dx;
 	int dy;
@@ -27,7 +27,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data img)
 	i = 0;
 	while (i <= dx)
 	{
-		my_mlx_pixel_put(&img, x + i, y + i * dy / dx, tab1.color);
+		my_mlx_pixel_put(&(*img), x + i, y + i * dy / dx, tab1.color);
 		i++;
 	}
 }
@@ -44,9 +44,9 @@ void	*draw_line_img(t_data img, t_tab **tab, char *av)
 		while (x < count_col(av))
 		{
 			if (x + 1 < count_col(av))
-				draw_line(tab[y][x], tab[y][x + 1], img);
+				draw_line(tab[y][x], tab[y][x + 1], &img);
 			if (y + 1 < count_lines(av))
-				draw_line(tab[y][x], tab[y + 1][x], img);
+				draw_line(tab[y][x], tab[y + 1][x], &img);
 			x++;
 		}
 		y++;
