@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:51:27 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:56:00 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		generate_rgb();
 int		create_trgb(int t, int r, int g, int b);
-void	change_to_iso(t_tab **tab, char *av);
+void	change_to_iso(t_tab ***tab, char *av);
 
 #endif
