@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 16:19:37 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:21:05 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 
 void    *get_img(void *mlx, int width, int height, char *av)
 {
-	t_tab	**tab;
+	t_tab	*tab;
 	int		fd;
 	char	*line;
 	int i;
@@ -77,16 +77,16 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	{
 		while (ft_split(line, ' ')[i])
 		{
-			tab[j]->x = j + width / 4;
+			tab[j].x = j + width / 4;
 			printf("test\n");
-			tab[j]->y = i + height / 4;
-			tab[j]->z = ft_atoi(ft_split(line, ' ')[i]);
-			tab[j]->color = create_trgb(0, 255, 255, 255);
+			tab[j].y = i + height / 4;
+			tab[j].z = ft_atoi(ft_split(line, ' ')[i]);
+			tab[j].color = create_trgb(0, 255, 255, 255);
 		}
 		j++;
 	}
 	close(fd);
-	return (draw_img(mlx, width, height, tab, av));
+	return (draw_img(mlx, width, height, &tab, av));
 }
 
 
