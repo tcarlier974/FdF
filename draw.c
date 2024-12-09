@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:22:17 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:36:42 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
 	while (1)
 	{
-		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, gen_color(tab1, tab2));
+		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, tab1.color);
 		if (tab1.x == tab2.x && tab1.y == tab2.y)
 			break ;
 		e2 = 2 * line.err;
