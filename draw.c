@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 21:19:00 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:19:35 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	
 	line.sx = 0;
 	line.sy = 0;
-		if (tab2.x == 5)
-		{
-			printf("x1 : %d, y1 : %d\n", tab1.x, tab1.y);
-			printf("x2 : %d, y2 : %d\n", tab2.x, tab2.y);
-		}
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
 	while (1)
@@ -81,9 +76,9 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 		while (x < c)
 		{
 			printf("Draw line, x : %d\n", x);
-			if (x + 1 < c)
+			if (x + 1 <= c)
 				draw_line(tab[y][x], tab[y][x + 1], &(*img));
-			if (y + 1 < l)
+			if (y + 1 <= l)
 				draw_line(tab[y][x], tab[y + 1][x], &(*img));
 			printf("End draw line, x : %d\n", x);
 			x++;
