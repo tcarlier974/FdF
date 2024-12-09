@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:32:09 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:06:50 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 {
 	t_line	line;
 	int		e2;
+	
 	line.sx = 0;
 	line.sy = 0;
 	init_derivative(&line, &tab1, &tab2);
@@ -46,6 +47,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 		if (tab1.x == tab2.x && tab1.y == tab2.y)
 			break ;
 		e2 = 2 * line.err;
+		printf("e2 : %d\n", e2);
 		if (e2 >= line.dy)
 		{
 			line.err -= line.dy;
