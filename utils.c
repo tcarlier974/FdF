@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 02:45:07 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:26:06 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:51:20 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,4 @@ int	count_col(char *av)
 	close(fd);
 	free(line);
 	return (i);
-}
-
-int  isometric_format_x(int x, int y, int z)
-{
-	(void)z;
-	return (x - y) * cos(0.523599);
-}
-
-int  isometric_format_y(int x, int y, int z)
-{
-	return (x + y) * sin(0.523599) - z;
 }

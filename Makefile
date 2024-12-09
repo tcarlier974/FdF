@@ -8,6 +8,7 @@ SRC = main.c \
 		utils.c \
 		draw.c \
 		rgb.c \
+		iso.c \
 
 OBJ = $(SRC:.c=.o)
 
