@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:22:27 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:23:40 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 		e2 = 2 * line.err;
 		printf("in draw_lne, x : %d\n", tab1.x);
 		printf("in draw_lne, y : %d\n", tab1.y);
+		printf("e2 : %d\n", e2);
 		if (e2 >= line.dy)
 		{
 			line.err += line.dy;
