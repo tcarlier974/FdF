@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:53:35 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:09:02 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # include "./get_next_line/get_next_line.h"
 
 # ifndef HEIGTH
-#  define HEIGHT 500
+#  define HEIGHT 1000
 # endif
 # ifndef WIDTH
-#  define WIDTH 500
+#  define WIDTH 1000
 # endif
 
 typedef struct	s_data {
