@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 18:21:40 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:23:21 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,19 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 {
 	int	x;
 	int	y;
-
+	int	c;
+	int	l;
+	
+	l = count_lines(av);
+	c = count_col(av);
 	y = 0;
-	while (y < count_lines(av))
+	while (y < l)
 	{
 		x = 0;
 		printf("test\n");
-		while (x < count_col(av))
+		while (x < c)
 		{
-			printf("golem");
+			printf("golem\n");
 			if (x + 1 < count_col(av))
 				draw_line(tab[y][x], tab[y][x + 1], &(*img));
 			if (y + 1 < count_lines(av))
