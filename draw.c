@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 21:14:50 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:17:25 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 		if (tab1.x == tab2.x && tab1.y == tab2.y)
 			break ;
 		e2 = 2 * line.err;
+		if (tab2.x == 5)
+		{
+			printf("e2 : %d\n", e2);
+			printf("x1 : %d, y1 : %d\n", tab1.x, tab1.y);
+			printf("x2 : %d, y2 : %d\n", tab2.x, tab2.y);
+		}
 		if ((e2 >= line.dy && tab1.x != tab2.x) || tab1.y == tab2.y)
 		{
 			line.err -= line.dy;
