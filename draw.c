@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 20:26:17 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:28:34 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,15 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
-	printf("Init slope\n");
-	printf("line.err : %d\n", line.err);
 	while (1)
 	{
 		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, generate_rgb());
 		if (tab1.x == tab2.x && tab1.y == tab2.y)
 			break ;
 		e2 = 2 * line.err;
-		printf("in draw_lne, x : %d\n", tab1.x);
-		printf("in draw_lne, y : %d\n", tab1.y);
-		printf("e2 : %d\n", e2);
-		exit(0);
 		if (e2 >= line.dy)
 		{
-			line.err += line.dy;
+			line.err -= line.dy;
 			tab1.x += line.sx;
 		}
 		if (e2 <= line.dx)
