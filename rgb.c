@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:38:30 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:39:16 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,11 @@ int gen_rgb(int z, int max, int min)
     b = interpolate(255, 0, ratio); // De 255 à 0 pour le bleu
 
     return create_trgb(0, r, g, b);
+}
+
+int max(int a, int b)
+{
+    if (a > b)
+        return a;
+    return b;
 }

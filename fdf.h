@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:49:50 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:39:28 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	init_lenth(t_tab **tab, t_lenth *lenth, int height, int width);
 int		gen_color(t_tab tab1, t_tab tab2);
 int		gen_rgb(int z, int max, int min);
 void	init_extremum(char *av, int *max, int *min);
+int		max(int a, int b);
 
 #endif
