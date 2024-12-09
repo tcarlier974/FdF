@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:02:45 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:08:17 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,10 @@ int gen_rgb(int z, int max, int min)
     else
         ratio = (float)(z - min) / (float)(max - min);
 
-    if (ratio < 0.33)
-    {
-        // Interpoler entre bleu (0x0000FF) et cyan (0x00FFFF)
-        r = interpolate(0, 0, ratio / 0.33);
-        g = interpolate(0, 255, ratio / 0.33);
-        b = interpolate(255, 255, ratio / 0.33);
-    }
-    else if (ratio < 0.66)
-    {
-        // Interpoler entre cyan (0x00FFFF) et jaune (0xFFFF00)
-        r = interpolate(0, 255, (ratio - 0.33) / 0.33);
-        g = interpolate(255, 255, (ratio - 0.33) / 0.33);
-        b = interpolate(255, 0, (ratio - 0.33) / 0.33);
-    }
-    else
-    {
-        // Interpoler entre jaune (0xFFFF00) et orange (0xFFA500)
-        r = interpolate(255, 255, (ratio - 0.66) / 0.34);
-        g = interpolate(255, 165, (ratio - 0.66) / 0.34);
-        b = interpolate(0, 0, (ratio - 0.66) / 0.34);
-    }
+    // Interpoler entre bleu (0x0000FF) et rouge (0xFF0000)
+    r = interpolate(0, 255, ratio);
+    g = interpolate(0, 0, ratio);
+    b = interpolate(255, 0, ratio);
 
     return create_trgb(0, r, g, b);
 }
