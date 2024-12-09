@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:57:48 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:59:28 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 
 int	isometric_format_x(int x, int y, int z)
 {
+	int tmp;
+	
+	tmp = x;
 	(void)z;
-	return ((x - y) * cos(0.523599));
+	return ((tmp - y) * cos(0.523599));
 }
 
 int	isometric_format_y(int x, int y, int z)
 {
-	return ((x + y) * sin(0.523599) - z);
+	int tmp;
+	
+	tmp = x;
+	return ((tmp + y) * sin(0.523599) - z);
 }
 
 void	change_to_iso(t_tab ***tab, char *av)
