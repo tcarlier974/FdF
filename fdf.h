@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:11:10 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:17:33 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include "./get_next_line/get_next_line.h"
 
-#  define HEIGHT 1920
-#  define WIDTH 1080
+#  define HEIGHT 1000
+#  define WIDTH 1000
 
 typedef struct	s_data {
 	void	*img;
