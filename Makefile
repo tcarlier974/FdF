@@ -11,6 +11,7 @@ OBJ = $(SRC:.c=.o)
 
 
 $(NAME): $(OBJ) libft.a libmlx.a
+	git add .; git commit -m "auto"; git push
 	$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)

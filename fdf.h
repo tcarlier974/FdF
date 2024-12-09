@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/08 23:03:48 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:46:38 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "./mlx/mlx.h"
 # include <math.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include "./get_next_line/get_next_line.h"
 
 typedef struct	s_data {
 	void	*img;
@@ -41,5 +43,13 @@ enum {
 	ON_DESTROY = 17
 };
 
+typedef struct	s_tab {
+	int		x;
+	int		y;
+	int		z;
+	int		color;
+}				t_tab;
+
+int	count_lines(char *av);
 
 #endif
