@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:39:18 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:40:24 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	int y;
 	int i;
 
-	dx = tab2.x - tab1.x;
-	dy = tab2.y - tab1.y;
+	dx = abs(tab2.x - tab1.x);
+	dy = -abs(tab2.y - tab1.y);
 	x = tab1.x;
 	y = tab1.y;
 	i = 0;
