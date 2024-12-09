@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:08:17 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:19:48 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,17 @@ int interpolate(int start, int end, float ratio)
 
 int gen_rgb(int z, int max, int min)
 {
-    float ratio;
     int r, g, b;
+    int r1 = 0x0000FF;
+    int r2 = 0xFF0000;
+    int g1 = 0x0000FF;
+    int g2 = 0xFF0000;
+    int b1 = 0x0000FF;
+    int b2 = 0xFF0000;
 
-    if (max == min)
-        ratio = 0.5;
-    else
-        ratio = (float)(z - min) / (float)(max - min);
-
-    // Interpoler entre bleu (0x0000FF) et rouge (0xFF0000)
-    r = interpolate(0, 255, ratio);
-    g = interpolate(0, 0, ratio);
-    b = interpolate(255, 0, ratio);
+    r = r1 + (r2 - r1) * fraction(min, max, z);
+    g = g1 + (g2 - g1) * fraction(min, max, z);
+    b = b1 + (b2 - b1) * fraction(min, max, z);
 
     return create_trgb(0, r, g, b);
 }
