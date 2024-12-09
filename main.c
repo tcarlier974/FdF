@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:25:31 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:34:40 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@
 #include "./get_next_line/get_next_line.h"
 #include "fdf.h"
 #include <stdio.h>
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
 
 int    create_trgb(int t, int r, int g, int b)
 {
@@ -62,14 +54,10 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 				isometric_format_y(tab[y][x].x, tab[y][x].y, tab[y][x].z),
 				tab[y][x].color);
 			x++;
-			printf("x :%d < ", x);
-			printf("%d\n", count_lines(av));
 		}
-		printf("y :%d < ", y);
-		printf("%d\n", count_lines(av));
 		y++;
 	}
-	return (img.img);
+	return (draw_line_img(img, tab));
 }
 
 void    *get_img(void *mlx, int width, int height, char *av)
@@ -106,9 +94,6 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	close(fd);
 	return (draw_img(mlx, width, height, tab, av));
 }
-
-
-
 
 int	main(int ac, char **av)
 {
