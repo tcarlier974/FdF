@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:28:19 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:32:16 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ static int interpolate(int start, int end, float ratio)
     return (int)(start + (end - start) * ratio);
 }
 
+static int  max(int a, int b)
+{
+    if (a > b)
+        return a;
+    return b;
+}
+
 int gen_color(int z1, int z2, int color1, int color2)
 {
     float ratio;
@@ -38,13 +45,7 @@ int gen_color(int z1, int z2, int color1, int color2)
     if (z1 == z2)
         ratio = 0.5;
     else
-    {
-        int max_z = 10; // Vous pouvez ajuster cette valeur en fonction de votre plage de z
-        int min_z = 0;  // Vous pouvez ajuster cette valeur en fonction de votre plage de z
-        ratio = (float)(z2 - z1) / (float)(max_z - min_z);
-        if (ratio < 0)
-            ratio = -ratio;
-    }
+        ratio = (float)(z2 - z1) / (float)max(abs(z2), abs(z1));
 
     // Interpoler les composantes de couleur
     r = interpolate((color1 >> 16) & 0xFF, (color2 >> 16) & 0xFF, ratio);
