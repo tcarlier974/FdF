@@ -6,14 +6,14 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:58:54 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:12:42 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-static	void	init_slope(int *sx, int *sy, t_tab *tab1, t_tab *tab2)
+static void	init_slope(int *sx, int *sy, t_tab *tab1, t_tab *tab2)
 {
 	if (tab1->x < tab2->x)
 		*sx = 1;
@@ -25,39 +25,43 @@ static	void	init_slope(int *sx, int *sy, t_tab *tab1, t_tab *tab2)
 		*sy = -1;
 }
 
+static void	init_derivative(t_line *line, t_tab *tab1, t_tab *tab2)
+{
+	line->dx = abs(tab2->x - tab1->x);
+	line->dy = abs(tab2->y - tab1->y);
+	line->err = line->dx + line->dy;
+}
+
 static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 {
-	int dx;
-	int dy;
-	int sx;
-	int sy;
-	int err;
+	t_line	line;
+	int		e2;
 
-	dx = abs(tab2.x - tab1.x), dy = -abs(tab2.y - tab1.y), err = dx + dy;
-	init_slope(&sx, &sy, &tab1, &tab2);
+	init_derivative(&line, &tab1, &tab2);
+	init_slope(&line.sx, &line.sy, &tab1, &tab2);
 	while (1)
 	{
 		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, tab1.color);
 		if (tab1.x == tab2.x && tab1.y == tab2.y)
-			break;
-		int e2 = 2 * err;
-		if (e2 >= dy)
+			break ;
+		e2 = 2 * line.err;
+		if (e2 >= line.dy)
 		{
-			err += dy;
-			tab1.x += sx;
+			line.err += line.dy;
+			tab1.x += line.sx;
 		}
-		if (e2 <= dx)
+		if (e2 <= line.dx)
 		{
-			err += dx;
-			tab1.y += sy;
+			line.err += line.dx;
+			tab1.y += line.sy;
 		}
 	}
 }
 
 void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < count_lines(av))
@@ -82,5 +86,5 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
