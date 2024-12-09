@@ -6,24 +6,13 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:27:54 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 02:58:02 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 03:00:01 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* get_next_line.c */
 #include "get_next_line.h"
 #include <stdio.h>
-
-static char	*ft_strchr(const char *s, int c)
-{
-    while (*s)
-    {
-        if (*s == (char)c)
-            return ((char *)s);
-        s++;
-    }
-    return (NULL);
-}
 
 static char	*ft_extract_line(char **str)
 {
