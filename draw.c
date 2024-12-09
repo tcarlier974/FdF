@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:50:12 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:09:49 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
     
     // Vérifier que les coordonnées sont dans les limites de l'image
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
-        return;
-        
+        return ;
     dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
     *(unsigned int*)dst = color;
 }
