@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:59:28 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:59:55 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	change_to_iso(t_tab ***tab, char *av)
 		while (x < l)
 		{
 			tab[y][x]->x = isometric_format_x(tab[y][x]->x, tab[y][x]->y, tab[y][x]->z);
-			printf("x : %d\n", tab[y][x]->x);
+			printf("x : %d  ", tab[y][x]->x);
 			tab[y][x]->y = isometric_format_y(tab[y][x]->x, tab[y][x]->y, tab[y][x]->z);
+			printf("y : %d\n", tab[y][x]->y);
 			x++;
 		}
 		y++;
