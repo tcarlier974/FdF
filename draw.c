@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 18:23:21 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:05:26 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 		printf("test\n");
 		while (x < c)
 		{
-			printf("golem\n");
 			if (x + 1 < count_col(av))
 				draw_line(tab[y][x], tab[y][x + 1], &(*img));
 			if (y + 1 < count_lines(av))
