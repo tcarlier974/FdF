@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 21:12:40 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:13:57 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 			line.err -= line.dy;
 			tab1.x += line.sx;
 		}
-		if (e2 <= line.dx || tab1.x == tab2.x)
+		if ((e2 <= line.dx && tab1.y != tab2.y) || tab1.x == tab2.x)
 		{
 			line.err += line.dx;
 			tab1.y += line.sy;
