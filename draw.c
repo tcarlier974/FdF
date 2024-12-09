@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 21:24:40 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:31:01 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 {
 	t_line	line;
 	int		e2;
+	
+	// Vérifier que les coordonnées sont dans les limites
+	if (tab1.x < 0 || tab1.x >= WIDTH || tab1.y < 0 || tab1.y >= HEIGHT ||
+		tab2.x < 0 || tab2.x >= WIDTH || tab2.y < 0 || tab2.y >= HEIGHT)
+		return;
 	
 	line.sx = 0;
 	line.sy = 0;
@@ -93,10 +98,14 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
     return (img->img);
 }
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+    char    *dst;
+    
+    // Vérifier que les coordonnées sont dans les limites de l'image
+    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+        return;
+        
+    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+    *(unsigned int*)dst = color;
 }
