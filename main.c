@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 21:00:54 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:15:33 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int	main(int ac, char **av)
     if (mlx_win == NULL)
         return (1);
 	img.img = get_img(mlx, HEIGHT, WIDTH, av[1]);
+	printf("Display\n");
     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     vars.mlx = mlx;
     vars.win = mlx_win;
