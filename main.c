@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:01:43 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:07:27 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,24 @@ int	my_close(int keycode, t_vars *vars)
 void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 {
 	t_data img;
-	int i;
-	int j;
+	int x;
+	int y;
 
 	img.img = mlx_new_image(mlx, width, height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	i = 0;
-	j = count_lines(av);
-	while (i < j)
+	x = 0;
+	y = 0;
+	while (y < count_lines(av))
 	{
-		my_mlx_pixel_put(&img, tab[i]->x, tab[i]->y, tab[i]->color);
-		i++;
-		printf("%d < ", i);
-		printf("%d\n", count_lines(av));
+		while (x < count_col(av))
+		{
+			my_mlx_pixel_put(&img, tab[y][x].x, tab[y][x].y, tab[y][x].color);
+			x++;
+			printf("%d < ", x);
+			printf("%d\n", count_lines(av));
+		}
+		y++;
 	}
 	return (img.img);
 }

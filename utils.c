@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 02:45:07 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 16:47:41 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:07:45 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,22 @@ void	init_tab(t_tab ***tab, char *av)
 	}
 	close(fd);
 	free(line);
+}
+
+int	count_col(char *av)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	line = get_next_line(fd);
+	i = 0;
+	while (ft_split(line, ' ')[i] != NULL)
+		i++;
+	close(fd);
+	free(line);
+	return (i);
 }
