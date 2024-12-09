@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 19:42:07 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:42:22 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
 			if (y + 1 < l)
 				draw_line(tab[y][x], tab[y + 1][x], &(*img));
 			x++;
+			printf("End draw line, x : %d\n", x);
 		}
 		y++;
 	}
