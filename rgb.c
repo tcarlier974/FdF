@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:49:46 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 23:51:53 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,20 @@ int gen_color(t_tab tab1, t_tab tab2)
     return create_trgb(0, r, g, b);
 }
 
-int	gen_rgb(int z, int max, int min)
+int gen_rgb(int z, int max, int min)
 {
-	float	ratio;
-	int		r;
-	int		g;
-	int		b;
+    float ratio;
+    int r, g, b;
 
-	if (max == min)
-		ratio = 0.5;
-	else
-		ratio = (float)(z - min) / (float)(max - min);
-	r = interpolate((0xFF0000 >> 16) & 0xFF, (0x0000FF >> 16) & 0xFF, ratio);
-	g = interpolate((0xFF0000 >> 8) & 0xFF, (0x0000FF >> 8) & 0xFF, ratio);
-	b = interpolate(0xFF0000 & 0xFF, 0x0000FF & 0xFF, ratio);
-	return (create_trgb(0, r, g, b));
+    if (max == min)
+        ratio = 0.5;
+    else
+        ratio = (float)(z - min) / (float)(max - min);
+
+    // Interpoler les composantes de couleur entre blanc (0xFFFFFF) et rouge foncé (0x8B0000)
+    r = interpolate(255, 139, ratio); // 255 pour blanc, 139 pour rouge foncé
+    g = interpolate(255, 0, ratio);   // 255 pour blanc, 0 pour rouge foncé
+    b = interpolate(255, 0, ratio);   // 255 pour blanc, 0 pour rouge foncé
+
+    return create_trgb(0, r, g, b);
 }
