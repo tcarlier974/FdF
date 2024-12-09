@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 17:06:31 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:23:54 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ typedef struct	s_tab {
 int	count_lines(char *av);
 void	init_tab(t_tab ***tab, char *av);
 int	count_col(char *av);
+int  isometric_format_y(int x, int y, int z);
+int  isometric_format_x(int x, int y, int z);
 
 #endif
