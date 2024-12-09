@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:43:11 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:45:25 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,25 @@ int gen_rgb(int z, int max, int min)
 {
     int r, g, b;
     float ratio;
+    int cold[3] = {0, 0, 255};    // Blue
+    int neutral[3] = {0, 255, 0}; // Green
+    int hot[3] = {255, 0, 0};     // Red
 
     ratio = fraction(min, max, z);
-    r = interpolate(50, 255, ratio); // De 0 à 255 pour le rouge
-    g = interpolate(0, 0, ratio);   // De 0 à 0 pour le vert (pas de vert)
-    b = interpolate(255, 50, ratio); // De 255 à 0 pour le bleu
-
+    if (ratio < 0.5)
+    {
+        ratio *= 2;
+        r = interpolate(cold[0], neutral[0], ratio);
+        g = interpolate(cold[1], neutral[1], ratio);
+        b = interpolate(cold[2], neutral[2], ratio);
+    }
+    else
+    {
+        ratio = (ratio - 0.5) * 2;
+        r = interpolate(neutral[0], hot[0], ratio);
+        g = interpolate(neutral[1], hot[1], ratio);
+        b = interpolate(neutral[2], hot[2], ratio);
+    }
     return create_trgb(0, r, g, b);
 }
 
