@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:53:56 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:55:10 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,12 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data **img)
 
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
-	printf("tab1.x = %d, tab1.y = %d, tab2.x = %d, tab2.y = %d\n", tab1.draw_x, tab1.draw_y, tab2.draw_x, tab2.draw_y);
-	printf("slope x = %d, slope y = %d\n", line.sx, line.sy);
 	if (max(tab1.z, tab2.z) == tab1.z)
 		color = tab1.color;
 	else
 		color = tab2.color;
 	while (1)
 	{
-		printf("tab1.draw_x = %d, tab1.draw_y = %d\n", tab1.draw_x, tab1.draw_y);
 		my_mlx_pixel_put(&(**img), tab1.draw_x, tab1.draw_y, color);
 		if (tab1.draw_x == tab2.draw_x && tab1.draw_y == tab2.draw_y)
 			break ;
@@ -63,7 +60,6 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data **img)
 			line.err += line.dx;
 			tab1.draw_y += line.sy;
 		}
-		printf("tab1.draw_x = %d, tab1.draw_y = %d\n", tab1.draw_x, tab1.draw_y);
 	}
 }
 
