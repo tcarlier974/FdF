@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 18:06:08 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:43:49 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	l = count_col(av);
 	init_tab(&tab, av);
 	init_extremum(av, &max, &min);
-	while (j < l - 1)
+	while (j < l)
 	{
 		i = 0;
+		printf("Line %d\n", j);
 		while (i < c - 1)
 		{
 			tab[j][i].x = i * 20;
