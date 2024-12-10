@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:47:52 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:12:52 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,23 @@ int gen_rgb(int z, int max, int min)
         b = interpolate(neutral[2], hot[2], ratio);
     }
     return create_trgb(0, r, g, b);
+}
+
+int	_fdf_get_gradient_color(t_tab point1, t_tab point2, t_tab current)
+{
+	float	percentage;
+	int		red;
+	int		green;
+	int		blue;
+
+	if (point1.draw_x == point2.draw_x)
+		percentage = (float)(current.draw_y - point1.draw_y) / (point2.draw_y - point1.draw_y);
+	else
+		percentage = (float)(current.draw_x - point1.draw_x) / (point2.draw_x - point1.draw_x);
+	red = (int)((1 - percentage) * ((point1.color >> 16) & 0xFF) + percentage * ((point2.color >> 16) & 0xFF));
+	green = (int)((1 - percentage) * ((point1.color >> 8) & 0xFF) + percentage * ((point2.color >> 8) & 0xFF));
+	blue = (int)((1 - percentage) * (point1.color & 0xFF) + percentage * (point2.color & 0xFF));
+	return ((red << 16) | (green << 8) | blue);
 }
 
 int max(int a, int b)

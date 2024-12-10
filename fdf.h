@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:08:38 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:13:04 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void	init_extremum(char *av, int *max, int *min);
 int		max(int a, int b);
 void	zoom_init(t_tab ****tab, char *av);
 void	_fdf_calcul_draw(t_tab ****tab, int x, int y);
+int	_fdf_get_gradient_color(t_tab point1, t_tab point2, t_tab current);
 
 #endif
