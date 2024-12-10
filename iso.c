@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 15:14:35 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:32:39 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	zoom_init(t_tab ****tab, char *av)
     {
         y = 0;
         printf("x_line : %d\n", x);
-        while (y < count_lines(av) - 1)
+        while (y < count_lines(av))
         {
             (**tab)[x][y].draw_x = (**tab)[x][y].x * zoom;
             (**tab)[x][y].draw_y = (**tab)[x][y].y * zoom;
