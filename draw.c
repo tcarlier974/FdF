@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:22:23 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:26:00 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	printf("tab1.x = %d, tab1.y = %d, tab2.x = %d, tab2.y = %d\n", tab1.x, tab1.y, tab2.x, tab2.y);
 	printf("slope x = %d, slope y = %d\n", line.sx, line.sy);
 	exit(0);
+	if (max(tab1.z, tab2.z) == tab1.z)
+		color = tab1.color;
+	else
+		color = tab2.color;
 	while (1)
 	{
-		if (max(tab1.z, tab2.z) == tab1.z)
-			color = tab1.color;
-		else
-			color = tab2.color;
 		my_mlx_pixel_put(&(*img), tab1.draw_x, tab1.draw_y, color);
 		if (tab1.draw_x == tab2.draw_x && tab1.draw_y == tab2.y)
 			break ;
 		e2 = 2 * line.err;
-		if (e2 >= line.dy)
+		if (e2 >= -line.dy)
 		{
 			line.err -= line.dy;
 			tab1.draw_x += line.sx;
 		}
-		if (e2 <= line.dx)
+		if (e2 < line.dx)
 		{
 			line.err += line.dx;
 			tab1.draw_y += line.sy;
