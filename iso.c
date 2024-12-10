@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 16:33:48 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:34:19 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	zoom_init(t_tab ****tab, char *av)
         }
         x++;
     }
+    printf("Zoom done\n");
 }
