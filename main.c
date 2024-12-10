@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 18:03:05 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:05:19 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 	c = count_lines(av);
 	l = count_col(av);
 	init_lenth(tab, &lenth, c, l);
-	printf("lenth done\n");
 	change_to_iso(&tab, av, lenth.offset_x, lenth.offset_y);
-	printf("Iso done\n");
 	while (y < c)
 	{
 		x = 0;
@@ -69,23 +67,23 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 void    *get_img(void *mlx, int width, int height, char *av)
 {
 	t_tab	**tab;
-	int		fd;
 	char	*line;
 	int i;
 	int j;
 	int max;
 	int min;
+	int c;
+	int l;
 
-	fd = open(av, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
 	j = 0;
+	c = count_lines(av);
+	l = count_col(av);
 	init_tab(&tab, av);
 	init_extremum(av, &max, &min);
-	while ((line = get_next_line(fd)))
+	while (j < c)
 	{
 		i = 0;
-		while (ft_split(line, ' ')[i] != NULL)
+		while (i < l)
 		{
 			tab[j][i].x = i * 20;
 			tab[j][i].y = j * 20;
@@ -95,10 +93,8 @@ void    *get_img(void *mlx, int width, int height, char *av)
 			tab[j][i].draw_y = 0;
 			i++;
 		}
-		free(line);
 		j++;
 	}
-	close(fd);
 	return (draw_img(mlx, width, height, tab, av));
 }
 
