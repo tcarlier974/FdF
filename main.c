@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 18:45:39 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:45:51 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	{
 		i = 0;
 		line = get_next_line(fd);
-		printf("i : %d\n", i);
+		printf("j : %d\n", j);
 		while (i < c - 1)
 		{
 			tab[j][i].x = i * 20;
