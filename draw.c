@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:46:34 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:49:41 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_derivative(t_line *line, t_tab *tab1, t_tab *tab2)
 	line->err = line->dx - line->dy;
 }
 
-static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
+static void	draw_line(t_tab tab1, t_tab tab2, t_data **img)
 {
 	t_line	line;
 	int		e2;
@@ -48,7 +48,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 		color = tab2.color;
 	while (1)
 	{
-		my_mlx_pixel_put(&(*img), tab1.draw_x, tab1.draw_y, color);
+		my_mlx_pixel_put(&(**img), tab1.draw_x, tab1.draw_y, color);
 		if (tab1.draw_x == tab2.draw_x && tab1.draw_y == tab2.draw_y)
 			break ;
 		e2 = 2 * line.err;
@@ -84,12 +84,12 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
             if (x < c - 2)
             {
                 printf("Drawing horizontal line at y=%d, x=%d to x+1=%d\n", y, x, x + 1);
-                draw_line(tab[y][x], tab[y][x + 1], img);
+                draw_line(tab[y][x], tab[y][x + 1], &img);
             }
             if (y < l - 2)
             {
                 printf("Drawing vertical line at x=%d, y=%d to y+1=%d\n", x, y, y + 1);
-                draw_line(tab[y][x], tab[y + 1][x], img);
+                draw_line(tab[y][x], tab[y + 1][x], &img);
             }
             x++;
         }
