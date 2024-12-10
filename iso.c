@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 16:49:20 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:09:42 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,8 @@ void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y)
         x = 0;
         while (x < l - 1)
         {
-            (*tab)[y][x].draw_x = isometric_format_x((*tab)[y][x].x, 
-                           (*tab)[y][x].y, (*tab)[y][x].z) + offset_x;
-            printf("x : %d  ", (*tab)[y][x].x);
-            (*tab)[y][x].draw_y = isometric_format_y((*tab)[y][x].x, 
-                           (*tab)[y][x].y, (*tab)[y][x].z) + offset_y;
-            printf("y : %d\n", (*tab)[y][x].y);
+            (*tab)[y][x].draw_x += offset_x;
+            (*tab)[y][x].draw_y += offset_y;
             x++;
         }
         y++;
@@ -60,28 +56,35 @@ void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y)
 
 void	zoom_init(t_tab ****tab, char *av)
 {
-    float zoom;
     int x;
     int y;
     
-    zoom = 1.0;
     x = 0;
-    printf("Zoom : %f\n", zoom);
+    printf("Zoom start \n");
     while (x < count_col(av))
     {
         y = 0;
-        printf("x_line : %d\n", x);
-        while (y < count_lines(av) - 1)
+        while (y < count_lines(av))
         {
-            if (x == 5)
-                printf("y_line : %d\n", y);
-            (**tab)[x][y].draw_x = (**tab)[x][y].x;
-            printf("x : %d  ", (**tab)[x][y].draw_x);
-            (**tab)[x][y].draw_y = (**tab)[x][y].y;
-            printf("y : %d\n", (**tab)[x][y].draw_y);
+            _fdf_calcul_draw(tab, x, y);
             y++;
         }
         x++;
     }
     printf("Zoom done\n");
+}
+
+void	_fdf_calcul_draw(t_tab ****tab, int x, int y)
+{
+    float zoom;
+    float scale_x;
+    float scale_y;
+    float scale_z;
+    
+    zoom = 0.9;
+    scale_x = (**tab)[y][x].x * zoom;
+    scale_y = (**tab)[y][x].y * zoom;
+    scale_z = (**tab)[y][x].z * zoom;
+    (**tab)[y][x].draw_x = (scale_x - scale_y) * cos(0.523599);
+    (**tab)[y][x].draw_y = (scale_x + scale_y) * sin(0.523599) - scale_z;
 }
