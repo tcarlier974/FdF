@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:28:03 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:29:21 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 
 	init_derivative(&line, &tab1, &tab2);
 	init_slope(&line.sx, &line.sy, &tab1, &tab2);
-	printf("tab1.x = %d, tab1.y = %d, tab2.x = %d, tab2.y = %d\n", tab1.x, tab1.y, tab2.x, tab2.y);
+	printf("tab1.x = %d, tab1.y = %d, tab2.x = %d, tab2.y = %d\n", tab1.draw_x, tab1.draw_y, tab2.draw_x, tab2.draw_y);
 	printf("slope x = %d, slope y = %d\n", line.sx, line.sy);
 	if (max(tab1.z, tab2.z) == tab1.z)
 		color = tab1.color;
