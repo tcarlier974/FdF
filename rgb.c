@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:28 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:45:46 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:47:52 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int gen_rgb(int z, int max, int min)
     int r, g, b;
     float ratio;
     int cold[3] = {0, 0, 255};    // Blue
-    int neutral[3] = {255, 255, 255}; // Green
+    int neutral[3] = {255, 255, 255}; // withe
     int hot[3] = {255, 0, 0};     // Red
 
     ratio = fraction(min, max, z);

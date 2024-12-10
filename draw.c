@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:41:27 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 01:00:27 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,19 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 			color = tab1.color;
 		else
 			color = tab2.color;
-		my_mlx_pixel_put(&(*img), tab1.x, tab1.y, color);
-		if (tab1.x == tab2.x && tab1.y == tab2.y)
+		my_mlx_pixel_put(&(*img), tab1.draw_x, tab1.draw_y, color);
+		if (tab1.draw_x == tab2.draw_x && tab1.draw_y == tab2.y)
 			break ;
 		e2 = 2 * line.err;
-		if ((e2 >= line.dy && tab1.x != tab2.x) || tab1.y == tab2.y)
+		if ((e2 >= line.dy && tab1.draw_x != tab2.draw_x) || tab1.draw_y == tab2.draw_y)
 		{
 			line.err -= line.dy;
-			tab1.x += line.sx;
+			tab1.draw_x += line.sx;
 		}
-		if ((e2 <= line.dx && tab1.y != tab2.y) || tab1.x == tab2.x)
+		if ((e2 <= line.dx && tab1.draw_y != tab2.draw_y) || tab1.draw_x == tab2.draw_x)
 		{
 			line.err += line.dx;
-			tab1.y += line.sy;
+			tab1.draw_y += line.sy;
 		}
 	}
 }

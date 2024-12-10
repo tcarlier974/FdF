@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/09 23:37:11 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:58:23 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	*draw_img(void *mlx, int width, int height, t_tab **tab, char *av)
 		x = 0;
 		while (x < l)
 		{
-			my_mlx_pixel_put(&img, tab[y][x].x, tab[y][x].y, tab[y][x].color);
+			my_mlx_pixel_put(&img, tab[y][x].draw_x, tab[y][x].draw_y, tab[y][x].color);
 			x++;
 		}
 		y++;

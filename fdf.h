@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 00:39:28 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:57:27 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct	s_tab {
 	int		x;
 	int		y;
 	int		z;
+	int     draw_x;
+	int     draw_y;
 	int		color;
 }				t_tab;
 
@@ -81,5 +83,6 @@ int		gen_color(t_tab tab1, t_tab tab2);
 int		gen_rgb(int z, int max, int min);
 void	init_extremum(char *av, int *max, int *min);
 int		max(int a, int b);
+void	zoom_init(t_tab ****tab, char *av);
 
 #endif
