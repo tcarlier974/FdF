@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 18:54:05 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:55:50 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	_fdf_calcul_draw(t_tab ****tab, int x, int y)
     float scale_y;
     float scale_z;
     
-    zoom = 0.5;
+    zoom = 1.2;
     scale_x = (**tab)[y][x].x * zoom;
     scale_y = (**tab)[y][x].y * zoom;
     scale_z = (**tab)[y][x].z * zoom;
