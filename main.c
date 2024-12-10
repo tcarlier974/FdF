@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 18:43:49 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:45:07 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	int max;
 	int min;
 	int c;
+	int fd;
 	int l;
 
 	j = 0;
@@ -80,10 +81,16 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	l = count_col(av);
 	init_tab(&tab, av);
 	init_extremum(av, &max, &min);
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
 	while (j < l)
 	{
 		i = 0;
-		printf("Line %d\n", j);
+		line = get_next_line(fd);
 		while (i < c - 1)
 		{
 			tab[j][i].x = i * 20;
@@ -94,8 +101,10 @@ void    *get_img(void *mlx, int width, int height, char *av)
 			tab[j][i].draw_y = 0;
 			i++;
 		}
+		free(line);
 		j++;
 	}
+	close(fd);
 	return (draw_img(mlx, width, height, tab, av));
 }
 
