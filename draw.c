@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:42:19 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:43:50 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
 	while (1)
 	{
 		my_mlx_pixel_put(&(*img), tab1.draw_x, tab1.draw_y, color);
-		if (tab1.draw_x == tab2.draw_x && tab1.draw_y == tab2.y)
+		if (tab1.draw_x == tab2.draw_x && tab1.draw_y == tab2.draw_y)
 			break ;
 		e2 = 2 * line.err;
 		if (e2 >= -line.dy && tab1.draw_x != tab2.draw_x)
