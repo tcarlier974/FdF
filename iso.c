@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 16:45:45 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:46:31 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void	zoom_init(t_tab ****tab, char *av)
     zoom = 1.0;
     x = 0;
     printf("Zoom : %f\n", zoom);
-    while (x < count_col(av))
+    while (x < count_lines(av))
     {
         y = 0;
         printf("x_line : %d\n", x);
-        while (y < count_lines(av))
+        while (y < count_col(av))
         {
             if (x == 5)
                 printf("y_line : %d\n", y);
