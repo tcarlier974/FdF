@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:47:50 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 18:05:33 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:05:46 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void    *get_img(void *mlx, int width, int height, char *av)
 	l = count_col(av);
 	init_tab(&tab, av);
 	init_extremum(av, &max, &min);
-	while (j < l)
+	while (j < c - 1)
 	{
 		i = 0;
-		while (i < c)
+		while (i < l - 1)
 		{
 			tab[j][i].x = i * 20;
 			tab[j][i].y = j * 20;
