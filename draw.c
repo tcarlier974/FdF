@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:26:18 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:28:03 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static void	init_slope(int *sx, int *sy, t_tab *tab1, t_tab *tab2)
 {
-	if (tab1->x < tab2->x)
+	if (tab1->draw_x < tab2->draw_x)
 		*sx = 1;
 	else
 		*sx = -1;
-	if (tab1->y < tab2->y)
+	if (tab1->draw_y < tab2->draw_y)
 		*sy = 1;
 	else
 		*sy = -1;
@@ -27,8 +27,8 @@ static void	init_slope(int *sx, int *sy, t_tab *tab1, t_tab *tab2)
 
 static void	init_derivative(t_line *line, t_tab *tab1, t_tab *tab2)
 {
-	line->dx = abs(tab2->x - tab1->x);
-	line->dy = abs(tab2->y - tab1->y);
+	line->dx = abs(tab2->draw_x - tab1->draw_x);
+	line->dy = abs(tab2->draw_y - tab1->draw_y);
 	line->err = line->dx + line->dy;
 }
 
