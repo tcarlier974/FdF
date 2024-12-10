@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:58:58 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:59:19 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ void	*draw_line_img(t_data *img, t_tab **tab, char *av)
         x = 0;
         while (x < c - 1)
         {
-            if (x < c - 2)
+            if (x < c - 1)
             {
                 printf("Drawing horizontal line at y=%d, x=%d to x+1=%d\n", y, x, x + 1);
                 draw_line(tab[y][x], tab[y][x + 1], &img);
             }
-            if (y < l - 2)
+            if (y < l - 1)
             {
                 printf("Drawing vertical line at x=%d, y=%d to y+1=%d\n", x, y, y + 1);
                 draw_line(tab[y][x], tab[y + 1][x], &img);
