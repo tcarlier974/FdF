@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 01:01:00 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 01:04:14 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	zoom_init(t_tab ****tab, char *av)
     int x;
     int y;
     
-    zoom = 1.5;
+    zoom = 1.0;
     x = 0;
     while (x < count_lines(av))
     {
