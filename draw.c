@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:28:05 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 17:44:10 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:46:34 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_derivative(t_line *line, t_tab *tab1, t_tab *tab2)
 {
 	line->dx = abs(tab2->draw_x - tab1->draw_x);
 	line->dy = abs(tab2->draw_y - tab1->draw_y);
-	line->err = line->dx + line->dy;
+	line->err = line->dx - line->dy;
 }
 
 static void	draw_line(t_tab tab1, t_tab tab2, t_data *img)
