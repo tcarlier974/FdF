@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 20:18:27 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:37:50 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y)
         while (x < l)
         {
             (*tab)[y][x].draw_x += offset_x;
-            (*tab)[y][x].draw_y += offset_y;
+            (*tab)[y][x].draw_y -= offset_y;
             x++;
         }
         y++;
