@@ -13,11 +13,11 @@ SRC = main.c \
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -I./libft -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -I./libft  -g -fsanitize=address -c $< -o $@
 
 $(NAME): $(OBJ) libft.a libmlx.a
 	git add .; git commit -m "auto"; git push
-	$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -L./libft -lft -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Lmlx -lmlx -L./libft -lft -framework OpenGL -g -fsanitize=address -framework AppKit -o $(NAME)
 
 all: $(NAME)
 

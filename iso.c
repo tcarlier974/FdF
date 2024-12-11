@@ -6,29 +6,12 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:50:30 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/11 13:38:02 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:38:42 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
-
-int	isometric_format_x(int x, int y, int z)
-{
-	int tmp;
-	
-	tmp = x;
-	(void)z;
-	return ((tmp - y) * cos(0.523599));
-}
-
-int	isometric_format_y(int x, int y, int z)
-{
-	int tmp;
-	
-	tmp = x;
-	return ((tmp + y) * sin(0.523599) - z);
-}
 
 void	change_to_iso(t_tab ***tab, char *av, int offset_x, int offset_y)
 {
