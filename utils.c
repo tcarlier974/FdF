@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 02:45:07 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/11 13:33:04 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:34:04 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ void	init_lenth(t_tab **tab, t_lenth *lenth, int c, int l)
 	int max_y;
 
 	init_max_min(tab, c, l, &min_x, &max_x, &min_y, &max_y);
-	(*lenth).offset_x = (HEIGHT - (max_x - min_x)) / 2 - min_x;
-	(*lenth).offset_y = (WIDTH - (max_y - min_y)) / 2 - min_y;
+	(*lenth).offset_x = (WIDTH - (max_x - min_x)) / 2 - min_x;
+	(*lenth).offset_y = (HEIGHT - (max_y - min_y)) / 2 - min_y;
 }
 
 void	init_extremum(char *av, int *max, int *min)
