@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 17:48:39 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/11 13:33:23 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:33:41 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "./get_next_line/get_next_line.h"
 
-#  define HEIGHT 1200
+#  define HEIGHT 1900
 #  define WIDTH 1000
 
 typedef struct	s_data {
