@@ -6,7 +6,7 @@
 /*   By: tcarlier <tcarlier@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 02:45:07 by tcarlier          #+#    #+#             */
-/*   Updated: 2024/12/10 19:09:07 by tcarlier         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:30:16 by tcarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,45 @@ int	count_col(char *av)
 	return (i);
 }
 
+void	init_max_min(t_tab **tab, int c, int l, int *min_x, int *max_x, int *min_y, int *max_y)
+{
+	int x;
+	int y;
+
+	*min_x = tab[0][0].draw_x;
+	*max_x = tab[0][0].draw_x;
+	*min_y = tab[0][0].draw_y;
+	*max_y = tab[0][0].draw_y;
+	y = 0;
+	while (y < c)
+	{
+		x = 0;
+		while (x < l)
+		{
+			if (tab[y][x].draw_x < *min_x)
+				*min_x = tab[y][x].draw_x;
+			if (tab[y][x].draw_x > *max_x)
+				*max_x = tab[y][x].draw_x;
+			if (tab[y][x].draw_y < *min_y)
+				*min_y = tab[y][x].draw_y;
+			if (tab[y][x].draw_y > *max_y)
+				*max_y = tab[y][x].draw_y;
+			x++;
+		}
+		y++;
+	}
+}
+
 void	init_lenth(t_tab **tab, t_lenth *lenth, int c, int l)
 {
-	(*lenth).offset_x = HEIGHT / 2 - isometric_format_x(tab[c / 2][l / 2].x, tab[c / 2][l / 2].y, tab[c / 2][l / 2].z);
-	(*lenth).offset_y = WIDTH / 2 - isometric_format_y(tab[c / 2][l / 2].x, tab[c / 2][l / 2].y, tab[c / 2][l / 2].z);
+	int min_x;
+	int max_x;
+	int min_y;
+	int max_y;
+
+	init_max_min(tab, c, l, &min_x, &max_x, &min_y, &max_y);
+	(*lenth).offset_x = (WIDTH - (max_x - min_x)) / 2 - min_x;
+	(*lenth).offset_y = (HEIGHT - (max_y - min_y)) / 2 - min_y;
 }
 
 void	init_extremum(char *av, int *max, int *min)
